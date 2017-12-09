@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">Simple Calculator</string>
+    <array name="list_view">
+        <item>nagasai.g9@gmail.com</item>
+        <item>nagasaimanoj.g@icloud.com</item>
+        <item>nagasai.g9@outlook.com</item>
+    </array>
+</resources>
