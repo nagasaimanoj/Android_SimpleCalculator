@@ -1,5 +1,6 @@
 package com.blogspot.gnsmk.simplecalculator;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.os.Bundle;
 import android.view.View;
@@ -11,7 +12,7 @@ public class MainActivity extends Activity {
     String strPwd = "";
     int operation = 0, floatCount = 1;
     Double a = 0.0, i = 0.0;
-    boolean isFloat = false, isFloatTemp = false, isPwdOn = false; //I am bad with naming
+    boolean isFloat = false, isFloatTemp = false, isPwdOn = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,10 +24,10 @@ public class MainActivity extends Activity {
     }
 
     public void tempFun(View view) {
-        //this is for all beta functions
         isPwdOn = !isPwdOn;
     }
 
+    @SuppressLint("SetTextI18n")
     public void setOutput(Double output) {
         if (!isFloat) {
             tvOutput.setText("" + output.intValue());
@@ -177,37 +178,36 @@ public class MainActivity extends Activity {
     }
 
     public void operation(int op) {
-        //thank you for reading this comment. I really mean it
         if (!isPwdOn) {
             switch (operation) {
-                case 0:
-                    a = getOutput();
-                    setOutput(a);
-                    break;
-                case 1:
-                    a += getOutput();
-                    break;
-                case 2:
-                    a -= getOutput();
-                    break;
-                case 3:
-                    a *= getOutput();
-                    break;
-                case 4:
-                    a /= getOutput();
-                    break;
-                case 5:
-                    a %= getOutput();
-                    break;
-                default:
-                    Toast.makeText(this, "Something really seems wrong here", Toast.LENGTH_SHORT).show();
-                    break;
+            case 0:
+                a = getOutput();
+                setOutput(a);
+                break;
+            case 1:
+                a += getOutput();
+                break;
+            case 2:
+                a -= getOutput();
+                break;
+            case 3:
+                a *= getOutput();
+                break;
+            case 4:
+                a /= getOutput();
+                break;
+            case 5:
+                a %= getOutput();
+                break;
+            default:
+                Toast.makeText(this, "Something really seems wrong here", Toast.LENGTH_SHORT).show();
+                break;
             }
             setOutput(0.0);
             operation = op;
             isFloatTemp = false;
         } else {
-            if (strPwd != "") //intent should be added later
+            if (!strPwd.equals(""))
                 strPwd = "";
             isPwdOn = false;
         }
